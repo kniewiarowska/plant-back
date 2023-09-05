@@ -18,18 +18,6 @@
         <groovy.version>3.0.16</groovy.version>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.spockframework</groupId>
-                <artifactId>spock-bom</artifactId>
-                <version>2.3-groovy-3.0</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -49,22 +37,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!-- Spock -->
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-spring</artifactId>
+            <version>1.0-groovy-2.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy</artifactId>
-            <version>${groovy.version}</version>
+            <artifactId>groovy-all</artifactId>
+            <version>2.4.7</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -94,27 +77,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
-                <configuration>
-                    <useModulePath>false</useModulePath> <!-- https://issues.apache.org/jira/browse/SUREFIRE-1809 -->
-                    <useFile>false</useFile>
-                    <includes>
-                        <include>**/*Test</include>
-                        <include>**/*Spec</include>
-                    </includes>
-                    <statelessTestsetReporter
-                            implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
-                        <disable>false</disable>
-                        <version>3.0</version>
-                        <usePhrasedFileName>false</usePhrasedFileName>
-                        <usePhrasedTestSuiteClassName>true</usePhrasedTestSuiteClassName>
-                        <usePhrasedTestCaseClassName>true</usePhrasedTestCaseClassName>
-                        <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
-                    </statelessTestsetReporter>
-                </configuration>
             </plugin>
         </plugins>
     </build>
