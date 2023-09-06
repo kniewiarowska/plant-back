@@ -10,6 +10,6 @@ public class PlantController {
 
     @GetMapping("/test")
     public String basicCall(){
-        return "Hello word";
+        return "Hello world";
     }
 }
